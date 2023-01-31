@@ -1,12 +1,11 @@
-data "aws_ami" "app_ami" {
-  most_recent = true
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+    }
+  }
 }
 
-resource "aws_instance" "web" {
-  ami           = data.aws_ami.app_ami.id
-  instance_type = "t3.nano"
-
-  tags = {
-    Name = "HelloWorld"
-  }
+provider "aws" {
+  region  = "us-west-2"
 }
